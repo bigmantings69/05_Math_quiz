@@ -28,6 +28,29 @@ def yes_no(question):
         else:
             print("please enter yes or no")
 
+
+# statement generator to decorate the program
+def statement_generator(outcome, prize_decoration):
+
+    sides = prize_decoration * 3
+
+    outcome = "{} {} {}".format(sides, outcome, sides)
+    top_bottom = prize_decoration * len(outcome)
+
+    print(top_bottom)
+    print(outcome)
+    print(top_bottom)
+
+    return ""
+
+
+def start():
+    print()
+    print("lets get started")
+    print()
+    prize_decoration = "-"
+    return""
+
 # ask user if they have played before and display instructions if necessary
 statement_generator("Welcome to Higher or lower", "*")
 print()
