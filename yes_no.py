@@ -45,6 +45,7 @@ def statement_generator(outcome, prize_decoration):
 
 
 def start():
+
     print()
     print("lets get started")
     print()

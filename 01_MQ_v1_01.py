@@ -116,8 +116,9 @@ if played_before == "yes":
 
 # ask user for # of rounds then loop...
 
-game_summary = []
+game_history = []
 
+how_many = 5
 rounds_played = 0
 rounds_lost = 0
 rounds_drawn = 0
@@ -134,14 +135,12 @@ while end_game == "no":
     # Rounds Heading
     print()
     if rounds == "":
-        heading = "Continues Mode: " \
+        round_heading = "Continues Mode: " \
                 "Round {}".format(rounds_played)
 
     else:
-        heading = "Rounds {} of " \
-                "{}".format(rounds_played + 1, rounds)
-
-        print()
+        heading = "Round {} ".format(rounds_played + 1)
+    statement_generator(heading, "-")
 
     if rounds_played == rounds:
         break
@@ -151,16 +150,18 @@ while end_game == "no":
     # for item in range(0, 5):
     num_1 = random.randint(1, 10)
     num_2 = random.randint(1, 10)
+    num_3 = random.randint(10, 20)
+    num_4 = random.randint(1, 10)
 
     # Prints round info...
     print(heading)
 
     # Get user choice...
-    choose_instruction = "Please choose addition (+), subtraction (-)" \
-                         "or multiplication (*), all (a) or 'xxx' to quit"
+    choose_instruction = "Please choose add (+), subtract (-)" \
+                         "or multiply (*) or 'xxx' to quit"
     print()
-    choose_error = "Please choose from addition (+) " \
-                   "subtraction (-) or multiplication (*) (or xxx to quit)"
+    choose_error = "Please choose from add (+) " \
+                   "subtract (-) or multiply (*) (or xxx to quit)"
 
     # Ask user for choice and check it's valid
     user_choice = choice_checker(choose_instruction, mq_list,
@@ -169,6 +170,7 @@ while end_game == "no":
     # End game if exit code is typed
 
     if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
         break
 
     if user_choice == "+":
@@ -176,23 +178,77 @@ while end_game == "no":
         answer = eval(question)
 
         print("question: ", question)
+        print("answer", answer)
 
         # break
 
     if user_choice == "-":
-        question = "{} - {}".format(num_1, num_2)
+        question = "{} - {}".format(num_3, num_4)
         answer = eval(question)
 
         print("question: ", question)
         print("answer", answer)
         # break
 
-    if user_choice == "*":
+    elif user_choice == "*":
         question = "{} * {}".format(num_1, num_2)
         answer = eval(question)
 
         print("question: ", question)
         print("answer", answer)
+
+        if user_choice == answer:
+            result = "won"
+
+        else:
+            result = "lost"
+            rounds_lost += 1
+
+        for item in range(1, how_many + 1):
+
+            if user_choice == "xxx":
+                round_result = ""
+            if user_choice == "xxx":
+                percent_win = "0%"
+                rounds_won = "0"
+            if result == "won":
+                feedback = "you won"
+
+            else:
+                feedback = "you lost"
+            round_result = "Round {}: {}".format(rounds_played, feedback)
+            game_history.append(round_result)
+
+    # Ask user if they want to see their game history.
+    # If 'yes' show game game history
+
+    # Show game statistics
+    rounds_won = rounds_played - rounds_lost
+
+    rounds_lost = rounds_played - rounds_won
+
+    # **** Calculate Game Stats ****
+    percent_win = rounds_won / rounds_played * 100
+    percent_lose = rounds_lost / rounds_played * 100
+
+    print()
+    print("***** Game History *****")
+    print(game_history)
+
+    print()
+
+    # display game stats with % values to the nearest whole number
+    print("******* Game statistics *******")
+    print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
+                                                             percent_win,
+                                                             rounds_lost,
+                                                             percent_lose))
+    print()
+    print("Thanks for playing")
+
+
+
+
 
 
 
