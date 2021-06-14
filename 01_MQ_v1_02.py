@@ -116,7 +116,7 @@ if played_before == "yes":
 
 # ask user for # of rounds then loop...
 
-game_summary = []
+game_history = []
 
 how_many = 5
 rounds_played = 0
@@ -214,56 +214,40 @@ while end_game == "no":
             if result == "won":
                 feedback = "you won"
 
-    else:
-        feedback = "you wrote {}  - you {}".format(user_choice, result)
+            else:
+                feedback = "you lost"
+            round_result = "Round {}: {}".format(rounds_played, feedback)
+            game_history.append(round_result)
 
-# Output results...
+    # Ask user if they want to see their game history.
+    # If 'yes' show game game history
 
-    round_result = "Round {}: {}".format(rounds_played + 1, result)
-    game_summary.append(round_result)
+    # Show game statistics
+    rounds_won = rounds_played - rounds_lost
 
-    rounds_played += 1
+    rounds_lost = rounds_played - rounds_won
 
-    # end game if requested # of rounds has been played
+    # **** Calculate Game Stats ****
+    percent_win = rounds_won / rounds_played * 100
+    percent_lose = rounds_lost / rounds_played * 100
 
-    if rounds_played == rounds:
-        break
+    print()
+    print("***** Game History *****")
+    for item in game_history:
+        print(item)
 
-# Ask user if they want to see their game history.
-# If 'yes' show game game history
+    print()
 
-# Show game statistics
+    # display game stats with % values to the nearest whole number
+    print("******* Game statistics *******")
+    print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
+                                                                 percent_win,
+                                                                 rounds_lost,
+                                                                 percent_lose))
+    print()
+    print("Thanks for playing")
 
-rounds_won = rounds_played - rounds_lost - rounds_drawn
 
-# **** Calculate Game Stats ****
-
-percent_win = rounds_won / rounds_played * 100
-percent_lose = rounds_lost / rounds_played * 100
-percent_tie = rounds_drawn / rounds_played * 100
-
-print()
-
-print("***** Game History *****")
-for game in game_summary:
-    print(game)
-
-print()
-
-# display game stats with % values to the nearest whole number
-
-print("******* Game statistics *******")
-print("Win: {}, ({:.0f}%)\nLoss: {}, "
-      "({:.0f}%)\nTie: {}, ({:.0f}%)".format(rounds_won,
-                                             percent_win,
-                                             rounds_lost,
-                                             percent_lose,
-                                             rounds_drawn,
-                                             percent_tie))
-
-print()
-
-print("Thanks for playing")
 
 
 
