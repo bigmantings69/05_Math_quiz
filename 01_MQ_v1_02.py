@@ -78,6 +78,7 @@ def choice_checker(question, valid_list, error):
 # maths quiz list for the program
 yes_no_list = ["yes", "no"]
 mq_list = ["add", "subtract", "multiply", "+", "-", "*", "xxx"]
+difficulty_list = ["easy", "hard"]
 
 
 # statement generator to decorate the program
@@ -118,7 +119,7 @@ if played_before == "yes":
 
 game_history = []
 
-how_many = 5
+how_many = 1
 rounds_played = 0
 rounds_lost = 0
 rounds_drawn = 0
@@ -152,16 +153,24 @@ while end_game == "no":
     num_2 = random.randint(1, 10)
     num_3 = random.randint(10, 20)
     num_4 = random.randint(1, 10)
+    symbol = ("+", "-", "*")
+    operation = random.choice(symbol)
 
     # Prints round info...
     print(heading)
 
     # Get user choice...
     choose_instruction = "Please choose add (+), subtract (-)" \
-                         "or multiply (*) or 'xxx' to quit"
+                         "or multiply (*), press (enter) for random or 'xxx' to quit"
     print()
-    choose_error = "Please choose from add (+) " \
-                   "subtract (-) or multiply (*) (or xxx to quit)"
+    choose_error = "Please choose from add (+) subtract (-) " \
+                   "or multiply (*), press (enter) for random (or xxx to quit)"
+
+    diff_instructions = "What difficulty would you like to play with?? "
+    diff_error = "Please choose 'easy' or 'hard' "
+
+    diff_choice = choice_checker(diff_instructions, difficulty_list, diff_error)
+    print("you chose: {}".format(diff_choice))
 
     # Ask user for choice and check it's valid
     user_choice = choice_checker(choose_instruction, mq_list,
@@ -173,36 +182,17 @@ while end_game == "no":
         print("So you have changed your mind, come on play the game", "LLL")
         break
 
-    if user_choice == "+":
-        question = "{} + {}".format(num_1, num_2)
-        answer = eval(question)
+    question = "{} {} {}".format(num_1, operation, num_2)
+    answer = eval(question)
 
-        print("question: ", question)
-        print("answer", answer)
+    print("question: ", question)
 
-        # break
+    if user_choice == answer:
+        result = "won"
 
-    if user_choice == "-":
-        question = "{} - {}".format(num_3, num_4)
-        answer = eval(question)
-
-        print("question: ", question)
-        print("answer", answer)
-        # break
-
-    elif user_choice == "*":
-        question = "{} * {}".format(num_1, num_2)
-        answer = eval(question)
-
-        print("question: ", question)
-        print("answer", answer)
-
-        if user_choice == answer:
-            result = "won"
-
-        else:
-            result = "lost"
-            rounds_lost += 1
+    else:
+        result = "lost"
+        rounds_lost += 1
 
         for item in range(1, how_many + 1):
 
@@ -223,29 +213,29 @@ while end_game == "no":
     # If 'yes' show game game history
 
     # Show game statistics
-    rounds_won = rounds_played - rounds_lost
+rounds_won = rounds_played - rounds_lost
 
-    rounds_lost = rounds_played - rounds_won
+rounds_lost = rounds_played - rounds_won
 
-    # **** Calculate Game Stats ****
-    percent_win = rounds_won / rounds_played * 100
-    percent_lose = rounds_lost / rounds_played * 100
+# **** Calculate Game Stats ****
+percent_win = rounds_won / rounds_played * 100
+percent_lose = rounds_lost / rounds_played * 100
 
-    print()
-    print("***** Game History *****")
-    for item in game_history:
-        print(item)
+print()
+print("***** Game History *****")
+for item in game_history:
+    print(item)
 
-    print()
+print()
 
     # display game stats with % values to the nearest whole number
-    print("******* Game statistics *******")
-    print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
+print("******* Game statistics *******")
+print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
                                                                  percent_win,
                                                                  rounds_lost,
                                                                  percent_lose))
-    print()
-    print("Thanks for playing")
+print()
+print("Thanks for playing")
 
 
 
