@@ -77,7 +77,7 @@ def choice_checker(question, valid_list, error):
 
 # maths quiz list for the program
 yes_no_list = ["yes", "no"]
-mq_list = ["add", "subtract", "multiply", "+", "-", "*", "xxx"]
+mq_list = ["+", "-", "*"]
 difficulty_list = ["easy", "hard"]
 
 
@@ -150,11 +150,10 @@ while end_game == "no":
 
     # for item in range(0, 5):
     num_1 = random.randint(1, 10)
-    num_2 = random.randint(1, 10)
-    num_3 = random.randint(10, 20)
-    num_4 = random.randint(1, 10)
-    symbol = ("+", "-", "*")
-    operation = random.choice(symbol)
+    num_2 = random.randint(10, 20)
+    num_3 = random.randint(5, 10)
+    num_4 = random.randint(1, 5)
+    operation = random.choice(mq_list)
 
     # Prints round info...
     print(heading)
@@ -178,36 +177,42 @@ while end_game == "no":
 
     # End game if exit code is typed
 
-    if user_choice == "xxx":
-        print("So you have changed your mind, come on play the game", "LLL")
-        break
+    if diff_choice == "easy":
+        question = "{} {} {}".format(num_3, operation, num_4)
+        answer = eval(question)
 
-    question = "{} {} {}".format(num_1, operation, num_2)
+        print("question: ", question)
+
+    else:
+        question = "{} {} {}".format(num_1, operation, num_2)
     answer = eval(question)
 
     print("question: ", question)
 
-    if user_choice == answer:
-        result = "won"
-
+    result = int(input("Answer: "))
+    if result == answer:
+        print("W")
     else:
-        result = "lost"
-        rounds_lost += 1
+        print("L")
 
-        for item in range(1, how_many + 1):
+    if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
+        break
 
-            if user_choice == "xxx":
-                round_result = ""
-            if user_choice == "xxx":
-                percent_win = "0%"
-                rounds_won = "0"
-            if result == "won":
-                feedback = "you won"
+for item in range(1, how_many + 1):
 
-            else:
-                feedback = "you lost"
-            round_result = "Round {}: {}".format(rounds_played, feedback)
-            game_history.append(round_result)
+    if user_choice == "xxx":
+        round_result = ""
+    if user_choice == "xxx":
+        percent_win = "0%"
+        rounds_won = "0"
+if result == answer:
+    feedback = "you won"
+
+else:
+    feedback = "you lost"
+    round_result = "Round {}: {}".format(rounds_played, feedback)
+    game_history.append(round_result)
 
     # Ask user if they want to see their game history.
     # If 'yes' show game game history
@@ -228,7 +233,7 @@ for item in game_history:
 
 print()
 
-    # display game stats with % values to the nearest whole number
+# display game stats with % values to the nearest whole number
 print("******* Game statistics *******")
 print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
                                                                  percent_win,
