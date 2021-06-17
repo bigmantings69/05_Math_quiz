@@ -141,7 +141,7 @@ while end_game == "no":
 
     else:
         heading = "Round {} ".format(rounds_played + 1)
-    statement_generator(heading, "-")
+        statement_generator(heading, "-")
 
     if rounds_played == rounds:
         break
@@ -156,14 +156,15 @@ while end_game == "no":
     operation = random.choice(mq_list)
 
     # Prints round info...
-    print(heading)
 
     # Get user choice...
-    choose_instruction = "Please choose add (+), subtract (-)" \
-                         "or multiply (*), press (enter) for random or 'xxx' to quit"
+    choose_instruction = "Please choose (+), (-)," \
+                         " (*), or 'xxx' to quit"
     print()
-    choose_error = "Please choose from add (+) subtract (-) " \
-                   "or multiply (*), press (enter) for random (or xxx to quit)"
+    choose_error = "Please choose from (+), (-)," \
+                   " (*), (or xxx to quit)"
+
+    # difficulty function for easy and hard
 
     diff_instructions = "What difficulty would you like to play with?? "
     diff_error = "Please choose 'easy' or 'hard' "
@@ -177,11 +178,13 @@ while end_game == "no":
 
     # End game if exit code is typed
 
+    if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
+        break
+
     if diff_choice == "easy":
         question = "{} {} {}".format(num_3, operation, num_4)
         answer = eval(question)
-
-        print("question: ", question)
 
     else:
         question = "{} {} {}".format(num_1, operation, num_2)
@@ -194,10 +197,6 @@ while end_game == "no":
         print("W")
     else:
         print("L")
-
-    if user_choice == "xxx":
-        print("So you have changed your mind, come on play the game", "LLL")
-        break
 
 for item in range(1, how_many + 1):
 
