@@ -178,10 +178,6 @@ while end_game == "no":
 
     # End game if exit code is typed
 
-    if user_choice == "xxx":
-        print("So you have changed your mind, come on play the game", "LLL")
-        break
-
     if diff_choice == "easy":
         question = "{} {} {}".format(num_3, operation, num_4)
         answer = eval(question)
@@ -192,7 +188,11 @@ while end_game == "no":
 
     print("question: ", question)
 
-    result = int(input("Answer: "))
+    result = int(input("Answer: ".format("xxx")))
+    choose_error = "Please type in a number (or xxx to quit)"
+    if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
+        break
     if result == answer:
         print("W")
         feedback = "Its a dub"
