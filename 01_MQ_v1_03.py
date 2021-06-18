@@ -117,7 +117,7 @@ if played_before == "yes":
 
 # ask user for # of rounds then loop...
 
-game_history = []
+game_summary = []
 
 how_many = 1
 rounds_played = 0
@@ -195,8 +195,10 @@ while end_game == "no":
     result = int(input("Answer: "))
     if result == answer:
         print("W")
+        feedback = "Its a dub"
     else:
         print("L")
+        feedback = "Its an L"
 
 for item in range(1, how_many + 1):
 
@@ -205,13 +207,12 @@ for item in range(1, how_many + 1):
     if user_choice == "xxx":
         percent_win = "0%"
         rounds_won = "0"
-    if result == answer:
-        feedback = "you won"
 
-    else:
-        feedback = "you lost"
-        round_result = "Round {}: {}".format(rounds_played, feedback)
-        game_history.append(round_result)
+    print(feedback)
+
+    round_result = "Round {}: {}".format(rounds_played, feedback)
+
+    game_summary.append(round_result)
 
     # Ask user if they want to see their game history.
     # If 'yes' show game game history
@@ -225,25 +226,21 @@ rounds_lost = rounds_played - rounds_won
 percent_win = rounds_won / rounds_played * 100
 percent_lose = rounds_lost / rounds_played * 100
 
+
 print()
 print("***** Game History *****")
-for item in game_history:
-    print(item)
+for game in game_summary:
+    print(game)
 
 print()
 
 # display game stats with % values to the nearest whole number
 print("******* Game statistics *******")
-print("Win: {}, ({:.0f}%)\nLoss: {}, ({:.0f}%)\n".format(rounds_won,
-                                                                 percent_win,
-                                                                 rounds_lost,
-                                                                 percent_lose))
+print("Win: {}, ({:.0f}%)\nLoss: {}, "
+        "({:.0f}%)".format(rounds_won,
+                           percent_win,
+                           rounds_lost,
+                           percent_lose
+                           ))
 print()
 print("Thanks for playing")
-
-
-
-
-
-
-
