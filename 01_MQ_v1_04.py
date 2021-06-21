@@ -55,7 +55,10 @@ def check_rounds():
             return response
 
 
-def choice_checker(question, valid_list, error):
+def choice_checker(question, valid_list):
+
+    error = "Please choose from (+), (-), (*)" \
+            " or xxx to quit"
 
     valid = False
     while not valid:
@@ -164,16 +167,13 @@ while end_game == "no":
     num_2 = random.randint(10, 20)
     num_3 = random.randint(5, 10)
     num_4 = random.randint(1, 5)
-    operation = choice_checker("pick from +, -, *")
+    operation = choice_checker
 
     # Prints round info...
 
     # Get user choice...
     choose_instruction = "Please choose (+), (-)," \
                          " (*), or 'xxx' to quit"
-    print()
-    choose_error = "Please choose from (+), (-)," \
-                   " (*), (or xxx to quit)"
 
     # difficulty function for easy and hard
 
@@ -184,8 +184,8 @@ while end_game == "no":
     print("you chose: {}".format(diff_choice))
 
     # Ask user for choice and check it's valid
-    user_choice = choice_checker(choose_instruction, mq_list,
-                                 choose_error)
+    user_choice = choice_checker(choose_instruction, mq_list
+                                 )
 
     # End game if exit code is typed
 
@@ -200,15 +200,16 @@ while end_game == "no":
     print("question: ", question)
 
     result = int(input("Answer: "))
-    if user_choice == "xxx":
-        print("So you have changed your mind, come on play the game", "LLL")
-        break
-    elif result == answer:
+    if result == answer:
         print("W")
         feedback = "Its a dub"
     else:
         print("L")
         feedback = "Its an L"
+
+    if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
+        break
 
 for item in range(1, how_many + 1):
 
