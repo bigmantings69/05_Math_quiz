@@ -23,7 +23,7 @@
       <file leaf-file-name="03_HL_v1_03.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../03_higher_lower_game/03_HL_v1_03.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="1292">
               <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
@@ -38,8 +38,8 @@
       <file leaf-file-name="01_MQ_v1_03.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/01_MQ_v1_03.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1532">
-              <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+            <state relative-caret-position="493">
+              <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="79" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -48,8 +48,18 @@
       <file leaf-file-name="01_MQ_v1_04.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_MQ_v1_04.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="952">
-              <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="01-RPS_Base_Component_v2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../02_RPS_Game/01-RPS_Base_Component_v2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-34">
+              <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -60,16 +70,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="238">
               <caret line="215" column="7" selection-start-line="215" selection-start-column="7" selection-end-line="215" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="01-RPS_Base_Component_v2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../02_RPS_Game/01-RPS_Base_Component_v2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3876">
-              <caret line="228" column="2" selection-start-line="228" selection-start-column="2" selection-end-line="232" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -443,7 +443,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -947,11 +947,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../02_RPS_Game/01-RPS_Base_Component_v2.py">
+    <entry file="file://$PROJECT_DIR$/../03_higher_lower_game/03_HL_v1_03.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3876">
-          <caret line="228" column="2" selection-start-line="228" selection-start-column="2" selection-end-line="232" selection-end-column="37" />
-          <folding />
+        <state relative-caret-position="1292">
+          <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+            <element signature="e#105#647#0" expanded="false" />
+            <element signature="e#1167#1379#0" expanded="false" />
+            <element signature="e#1399#1488#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -963,31 +968,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/01_MQ_v1_03.py">
+    <entry file="file://$PROJECT_DIR$/../02_RPS_Game/01-RPS_Base_Component_v2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1532">
-          <caret line="59" column="17" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="17" />
+        <state relative-caret-position="-34">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../03_higher_lower_game/03_HL_v1_03.py">
+    <entry file="file://$PROJECT_DIR$/01_MQ_v1_03.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="104" column="20" selection-start-line="104" selection-start-column="20" selection-end-line="104" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-            <element signature="e#105#647#0" expanded="false" />
-            <element signature="e#1167#1379#0" expanded="false" />
-            <element signature="e#1399#1488#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="493">
+          <caret line="77" column="6" selection-start-line="77" selection-start-column="6" selection-end-line="79" selection-end-column="27" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/01_MQ_v1_04.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="952">
-          <caret line="94" column="0" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+        <state relative-caret-position="170">
+          <caret line="198" column="43" selection-start-line="198" selection-start-column="43" selection-end-line="198" selection-end-column="43" />
           <folding />
         </state>
       </provider>

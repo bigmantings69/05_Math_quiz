@@ -55,7 +55,7 @@ def check_rounds():
             return response
 
 
-def choice_checker(question, valid_list):
+def choice_checker(question):
 
     error = "Please choose from (+), (-), (*)" \
             " or xxx to quit"
@@ -80,13 +80,34 @@ def choice_checker(question, valid_list):
         else:
             print(error)
 
+
+def diff_checker(question, valid_list):
+
+    diff_error = "Please choose from (+), (-), (*)" \
+            " or xxx to quit"
+
+    valid = False
+    while not valid:
+
+        # Ask user for choice (and out choice in lowercase)
+        response = input(question).lower()
+
+        # iterates through list and if response is an item
+        # in the list (or the first letter of an item), the
+        # full item name is returned
+        if response == "e" or response == "easy":
+            return "easy"
+        elif response == "h" or response == "hard":
+            return "-"
+        elif response == "xxx":
+            return response
+        else:
+            print(diff_error)
+
         for item in valid_list:
             if response == item[0] or response == item:
                 return item
 
-        # output error if item not in list
-        print(error)
-        print()
 
 # maths quiz list for the program
 yes_no_list = ["yes", "no"]
@@ -180,11 +201,11 @@ while end_game == "no":
     diff_instructions = "What difficulty would you like to play with?? "
     diff_error = "Please choose 'easy' or 'hard' "
 
-    diff_choice = choice_checker(diff_instructions, difficulty_list, diff_error)
+    diff_choice = diff_checker(diff_instructions, difficulty_list)
     print("you chose: {}".format(diff_choice))
 
     # Ask user for choice and check it's valid
-    user_choice = choice_checker(choose_instruction, mq_list
+    user_choice = choice_checker(choose_instruction
                                  )
 
     # End game if exit code is typed

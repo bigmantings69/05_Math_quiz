@@ -28,7 +28,6 @@ def yes_no(question):
 
 
 def check_rounds():
-
     while True:
         response = input("How many rounds: ")
 
@@ -56,7 +55,6 @@ def check_rounds():
 
 
 def choice_checker(question, valid_list, error):
-
     valid = False
     while not valid:
 
@@ -85,15 +83,15 @@ def choice_checker(question, valid_list, error):
         print(error)
         print()
 
+
 # maths quiz list for the program
 yes_no_list = ["yes", "no"]
-mq_list = ["+", "-", "*"]
+mq_list = ["+", "-", "*", "addition", "subtraction", "multiplication", "x"]
 difficulty_list = ["easy", "hard"]
 
 
 # statement generator to decorate the program
 def statement_generator(outcome, prize_decoration):
-
     sides = prize_decoration * 3
 
     outcome = "{} {} {}".format(sides, outcome, sides)
@@ -111,7 +109,8 @@ def start():
     print("lets get started")
     print()
     prize_decoration = "-"
-    return""
+    return ""
+
 
 # ask user if they have played before and display instructions if necessary
 statement_generator("Welcome to Math quiz", "*")
@@ -125,7 +124,6 @@ if played_before == "no":
 if played_before == "yes":
     start()
 
-
 # ask user for # of rounds then loop...
 
 game_summary = []
@@ -134,7 +132,6 @@ how_many = 1
 rounds_played = 0
 rounds_lost = 0
 rounds_drawn = 0
-
 
 # Ask user # of rounds, <enter> for infinite mode
 rounds = check_rounds()
@@ -148,7 +145,7 @@ while end_game == "no":
     print()
     if rounds == "":
         round_heading = "Continues Mode: " \
-                "Round {}".format(rounds_played)
+                        "Round {}".format(rounds_played)
 
     else:
         heading = "Round {} ".format(rounds_played + 1)
@@ -164,7 +161,7 @@ while end_game == "no":
     num_2 = random.randint(10, 20)
     num_3 = random.randint(5, 10)
     num_4 = random.randint(1, 5)
-    operation = choice_checker("pick from +, -, *")
+    operation = choice_checker("Please choose from +, - , * or xxx to exit")
 
     # Prints round info...
 
@@ -200,15 +197,16 @@ while end_game == "no":
     print("question: ", question)
 
     result = int(input("Answer: "))
-    if user_choice == "xxx":
-        print("So you have changed your mind, come on play the game", "LLL")
-        break
-    elif result == answer:
+    if result == answer:
         print("W")
         feedback = "Its a dub"
     else:
         print("L")
         feedback = "Its an L"
+
+    if user_choice == "xxx":
+        print("So you have changed your mind, come on play the game", "LLL")
+        break
 
 for item in range(1, how_many + 1):
 
@@ -236,7 +234,6 @@ rounds_lost = rounds_played - rounds_won
 percent_win = rounds_won / rounds_played * 100
 percent_lose = rounds_lost / rounds_played * 100
 
-
 print()
 print("***** Game History *****")
 for game in game_summary:
@@ -247,10 +244,10 @@ print()
 # display game stats with % values to the nearest whole number
 print("******* Game statistics *******")
 print("Win: {}, ({:.0f}%)\nLoss: {}, "
-        "({:.0f}%)".format(rounds_won,
-                           percent_win,
-                           rounds_lost,
-                           percent_lose
-                           ))
+      "({:.0f}%)".format(rounds_won,
+                         percent_win,
+                         rounds_lost,
+                         percent_lose
+                         ))
 print()
 print("Thanks for playing")
