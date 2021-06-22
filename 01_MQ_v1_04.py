@@ -26,6 +26,18 @@ def yes_no(question):
         else:
             print("please enter yes or no")
 
+def int_check(question, quit=None):
+
+    while True:
+
+        response = input(question)
+        if quit == "xxx" and response.lower() == "xxx":
+            return response
+        elif quit == "" and response.lower() == "":
+            return response
+
+        continue
+
 
 def check_rounds():
 
@@ -76,15 +88,22 @@ def choice_checker(question):
         elif response == "*" or response == "multiplication":
             return "*"
         elif response == "xxx":
-            return response
+            break
         else:
             print(error)
+
+    while True:
+
+        response = input(question)
+        if quit == "xxx" and response.lower() == "xxx":
+            return response
+        elif quit == "" and response.lower() == "":
+            return response
 
 
 def diff_checker(question, valid_list):
 
-    diff_error = "Please choose from (+), (-), (*)" \
-            " or xxx to quit"
+    diff_error = "Please choose from easy or hard"
 
     valid = False
     while not valid:
@@ -98,9 +117,7 @@ def diff_checker(question, valid_list):
         if response == "e" or response == "easy":
             return "easy"
         elif response == "h" or response == "hard":
-            return "-"
-        elif response == "xxx":
-            return response
+            return "hard"
         else:
             print(diff_error)
 
@@ -154,7 +171,7 @@ if played_before == "yes":
 
 game_summary = []
 
-how_many = 1
+how_many = 3
 rounds_played = 0
 rounds_lost = 0
 rounds_drawn = 0
@@ -188,13 +205,10 @@ while end_game == "no":
     num_2 = random.randint(10, 20)
     num_3 = random.randint(5, 10)
     num_4 = random.randint(1, 5)
-    operation = choice_checker
 
     # Prints round info...
 
     # Get user choice...
-    choose_instruction = "Please choose (+), (-)," \
-                         " (*), or 'xxx' to quit"
 
     # difficulty function for easy and hard
 
@@ -205,13 +219,14 @@ while end_game == "no":
     print("you chose: {}".format(diff_choice))
 
     # Ask user for choice and check it's valid
-    user_choice = choice_checker(choose_instruction
-                                 )
 
-    # End game if exit code is typed
+    operation = choice_checker("Please pick from +, -, * or xxx to quit")
+
+    # End game if exit code is type
 
     if diff_choice == "easy":
         question = "{} {} {}".format(num_3, operation, num_4)
+        print(question)
         answer = eval(question)
 
     else:
@@ -228,15 +243,15 @@ while end_game == "no":
         print("L")
         feedback = "Its an L"
 
-    if user_choice == "xxx":
+    if result == "xxx":
         print("So you have changed your mind, come on play the game", "LLL")
         break
 
 for item in range(1, how_many + 1):
 
-    if user_choice == "xxx":
+    if result == "xxx":
         round_result = ""
-    if user_choice == "xxx":
+    if result == "xxx":
         percent_win = "0%"
         rounds_won = "0"
 
