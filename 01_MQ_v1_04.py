@@ -26,7 +26,8 @@ def yes_no(question):
         else:
             print("please enter yes or no")
 
-def int_check(question, quit=None):
+
+def int_check(question, low=None, high=None, quit=None):
 
     while True:
 
@@ -36,7 +37,38 @@ def int_check(question, quit=None):
         elif quit == "" and response.lower() == "":
             return response
 
-        continue
+        situation = ""
+
+        if low is not None and high is not None:
+            situation = "both"
+        elif low is not None and high is None:
+            situation = "low only"
+        try:
+            response = int(response)
+
+            # check input is not too high or
+            # too low if a both upper and lower bounds
+            # are specified
+            if situation == "both":
+                if response < low or response > high:
+                    print("please enter a number between "
+                          "{} and {}".format(low, high))
+                    continue
+
+            # checks input is not too low
+            elif situation == "low only":
+                if response < low:
+                    print("Please enter a number that is more "
+                          "than (or equal to) {}".format(low))
+                    continue
+
+            return response
+
+        # checks input is a integer
+
+        except ValueError:
+            print("Please enter an integer")
+            continue
 
 
 def check_rounds():
@@ -88,17 +120,9 @@ def choice_checker(question):
         elif response == "*" or response == "multiplication":
             return "*"
         elif response == "xxx":
-            break
+            return response
         else:
             print(error)
-
-    while True:
-
-        response = input(question)
-        if quit == "xxx" and response.lower() == "xxx":
-            return response
-        elif quit == "" and response.lower() == "":
-            return response
 
 
 def diff_checker(question, valid_list):
@@ -226,16 +250,15 @@ while end_game == "no":
 
     if diff_choice == "easy":
         question = "{} {} {}".format(num_3, operation, num_4)
-        print(question)
         answer = eval(question)
 
     else:
         question = "{} {} {}".format(num_1, operation, num_2)
-    answer = eval(question)
+        answer = eval(question)
 
     print("question: ", question)
 
-    result = int(input("Answer: "))
+    result = int(int_check("Answer: "))
     if result == answer:
         print("W")
         feedback = "Its a dub"
