@@ -202,7 +202,17 @@ rounds_drawn = 0
 
 
 # Ask user # of rounds, <enter> for infinite mode
-rounds = check_rounds()
+rounds = int_check("Enter number of rounds: ", 1, quit="xxx")
+
+diff_instructions = "What difficulty would you like to play with?? "
+diff_error = "Please choose 'easy' or 'hard' "
+
+diff_choice = diff_checker(diff_instructions, difficulty_list)
+print("you chose: {}".format(diff_choice))
+
+# Ask user for choice and check it's valid
+
+operation = choice_checker("Please pick from +, -, * or xxx to quit")
 
 end_game = "no"
 while end_game == "no":
@@ -218,6 +228,7 @@ while end_game == "no":
     else:
         heading = "Round {} ".format(rounds_played + 1)
         statement_generator(heading, "-")
+        print()
 
     if rounds_played == rounds:
         break
@@ -232,20 +243,6 @@ while end_game == "no":
 
     # Prints round info...
 
-    # Get user choice...
-
-    # difficulty function for easy and hard
-
-    diff_instructions = "What difficulty would you like to play with?? "
-    diff_error = "Please choose 'easy' or 'hard' "
-
-    diff_choice = diff_checker(diff_instructions, difficulty_list)
-    print("you chose: {}".format(diff_choice))
-
-    # Ask user for choice and check it's valid
-
-    operation = choice_checker("Please pick from +, -, * or xxx to quit")
-
     # End game if exit code is type
 
     if diff_choice == "easy":
@@ -258,15 +255,15 @@ while end_game == "no":
 
     print("question: ", question)
 
-    result = int(int_check("Answer: "))
+    result = int(int_check("Answer: "), quit == "xxx")
     if result == answer:
         print("W")
         feedback = "Its a dub"
-    else:
+    elif result != answer:
         print("L")
         feedback = "Its an L"
 
-    if result == "xxx":
+    elif result == "xxx":
         print("So you have changed your mind, come on play the game", "LLL")
         break
 
