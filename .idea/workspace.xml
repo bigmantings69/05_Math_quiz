@@ -48,8 +48,8 @@
       <file leaf-file-name="01_MQ_v1_04.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/01_MQ_v1_04.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="241" column="33" selection-start-line="241" selection-start-column="33" selection-end-line="241" selection-end-column="33" />
+            <state relative-caret-position="17">
+              <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -150,8 +150,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="154" />
-    <option name="y" value="925" />
+    <option name="x" value="189" />
+    <option name="y" value="470" />
     <option name="width" value="1936" />
     <option name="height" value="873" />
   </component>
@@ -444,7 +444,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="154" y="925" width="1936" height="873" extended-state="0" />
+    <frame x="189" y="470" width="1936" height="873" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24895833" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -985,8 +985,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/01_MQ_v1_04.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="241" column="33" selection-start-line="241" selection-start-column="33" selection-end-line="241" selection-end-column="33" />
+        <state relative-caret-position="17">
+          <caret line="240" column="33" selection-start-line="240" selection-start-column="33" selection-end-line="240" selection-end-column="33" />
           <folding />
         </state>
       </provider>
