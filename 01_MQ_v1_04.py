@@ -113,11 +113,11 @@ def choice_checker(question):
         # iterates through list and if response is an item
         # in the list (or the first letter of an item), the
         # full item name is returned
-        if response == "+" or response == "addition":
+        if response == "+":
             return "+"
-        elif response == "-" or response == "subtraction":
+        elif response == "-":
             return "-"
-        elif response == "*" or response == "multiplication":
+        elif response == "*":
             return "*"
         elif response == "xxx":
             return response
@@ -255,7 +255,7 @@ while end_game == "no":
 
     print("question: ", question)
 
-    result = int(int_check("Answer: "), quit == "xxx")
+    result = int_check("Answer: ", quit == "xxx")
     if result == answer:
         print("W")
         feedback = "Its a dub"
