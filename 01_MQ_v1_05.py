@@ -7,24 +7,15 @@ import random
 def instructions():
     print()
     print("**** How to Play ****")
+    print()
+    print("This is a quiz where you will need to enter 'easy' or 'hard' mode")
+    print("and you will need to choose the arithmetic you will need to get as")
+    print(" many correct answers as you can")
+    print()
+    print("Good Luck")
+    print()
 
-
-# yes or no answer for the program
-def yes_no(question):
-    valid = False
-    while not valid:
-        response = input(question).lower()
-
-        if response == "yes" or response == "y":
-            response = "yes"
-            return response
-
-        elif response == "no" or response == "n":
-            response = "no"
-            return response
-
-        else:
-            print("please enter yes or no")
+# integer checker which has the xxx and it checks for integers
 
 
 def int_check(question, low=None, high=None, exit_code=None):
@@ -72,10 +63,7 @@ def int_check(question, low=None, high=None, exit_code=None):
             continue
 
 
-def choice_checker(question):
-
-    error = "Please choose from (+), (-), (*)" \
-            " or xxx to quit"
+def choice_checker(question, valid_list, error):
 
     valid = False
     while not valid:
@@ -86,43 +74,18 @@ def choice_checker(question):
         # iterates through list and if response is an item
         # in the list (or the first letter of an item), the
         # full item name is returned
-        if response == "+":
-            return "+"
-        elif response == "-":
-            return "-"
-        elif response == "*":
-            return "*"
-        elif response == "xxx":
-            return response
-        else:
-            print(error)
-
-
-def diff_checker(question, valid_list):
-
-    diff_error = "Please choose from easy or hard"
-
-    valid = False
-    while not valid:
-
-        # Ask user for choice (and out choice in lowercase)
-        response = input(question).lower()
-
-        # iterates through list and if response is an item
-        # in the list (or the first letter of an item), the
-        # full item name is returned
-        if response == "e" or response == "easy":
-            return "easy"
-        elif response == "h" or response == "hard":
-            return "hard"
-        else:
-            print(diff_error)
 
         for item in valid_list:
             if response == item[0] or response == item:
                 return item
 
+        # output error if item not in list
+        print(error)
+        print()
+
 # statement generator to decorate the program
+
+
 def statement_generator(outcome, prize_decoration):
 
     sides = prize_decoration * 3
@@ -136,6 +99,8 @@ def statement_generator(outcome, prize_decoration):
 
     return ""
 
+# if user choose yes then run this 
+
 
 def start():
     print()
@@ -144,26 +109,15 @@ def start():
     prize_decoration = "-"
     return""
 
-# ask user if they have played before and display instructions if necessary
+# welcome the user to this quiz
 statement_generator("Welcome to Math quiz", "*")
 print()
 
-played_before = yes_no("Have you done this quiz before? ")
-
-if played_before == "no":
-    instructions()
-
-if played_before == "yes":
-    start()
-
-
-# ask user for # of questions then loop...
 
 quiz_summary = []
 
-rounds_played = 0
-rounds_lost = 0
-rounds_drawn = 0
+questions_played = 0
+questions_wrong = 0
 
 # maths quiz list for the program
 
@@ -171,42 +125,63 @@ yes_no_list = ["yes", "no"]
 mq_list = ["+", "-", "*"]
 difficulty_list = ["easy", "hard"]
 
-# Ask user # of rounds, <enter> for infinite mode
+# ask user if they have done this before and display instructions if necessary
 
-rounds = int_check("Enter number of questions: ", 1, exit_code="")
+
+played_before = "Have you done this quiz before? "
+round_error = "please choose 'yes' or 'no'"
+round_choice = choice_checker(played_before, yes_no_list, round_error)
+
+if round_choice == "no":
+    instructions()
+
+if round_choice == "yes":
+    start()
+
+# ask the user to enter number of questions
+
+
+questions = int_check("Enter number of questions: ", 1, exit_code="")
+
+# ask the user for the difficulty and run the chosen difficulty
+
 
 diff_instructions = "What difficulty would you like to play with?? "
 diff_error = "Please choose 'easy' or 'hard' "
 
-diff_choice = diff_checker(diff_instructions, difficulty_list)
+diff_choice = choice_checker(diff_instructions, difficulty_list, diff_error)
 print("you chose: {}".format(diff_choice))
 
-# Ask user for choice and check it's valid
+# Ask user to pick the arithmetic and run the chosen arithmetic
 
-operation = choice_checker("Please pick from +, -, * or xxx to quit")
+operation_question = "Please pick from +, -, * or xxx to quit"
+operation_error = "Please choose from (+), (-), (*)" \
+            " or xxx to quit"
+operation = choice_checker(operation_question, mq_list, operation_error)
+
 
 end_quiz = "no"
 while end_quiz == "no":
 
     # Start of quiz Play Loop
 
-    # Rounds Heading
+    # questions Heading
     print()
-    if rounds == "":
+    if questions == "":
         round_heading = "Continues Mode: " \
-                "question {}".format(rounds_played)
+                "question {}".format(questions_played)
 
     else:
-        heading = "Question {} ".format(rounds_played + 1)
+        heading = "Question {} ".format(questions_played + 1)
         statement_generator(heading, "-")
         print()
 
-    if rounds_played == rounds:
+    if questions_played == questions:
         break
 
-    rounds_played += 1
+    questions_played += 1
 
-    # for item in range(0, 5):
+    # number for the quiz questions:
     num_1 = random.randint(1, 10)
     num_2 = random.randint(10, 20)
     num_3 = random.randint(5, 10)
@@ -214,7 +189,7 @@ while end_quiz == "no":
 
     # Prints round info...
 
-    # End quiz if exit code is type
+    # the quiz questions
 
     if diff_choice == "easy":
         question = "{} {} {}".format(num_3, operation, num_4)
@@ -226,7 +201,11 @@ while end_quiz == "no":
 
     print("question: ", question)
 
+    # the quiz user answer
+
     result = int_check("Answer: ", exit_code="")
+
+    # End quiz if exit code is type
     if result == "xxx":
         print("So you have changed your mind, come on do the quiz", "LLL")
         break
@@ -238,25 +217,25 @@ while end_quiz == "no":
         feedback = "Incorrect"
 
     # Output results...
-    round_result = "question {}: {}".format(rounds_played, feedback)
+    round_result = "question {}: {} | {}".format(questions_played, question, feedback)
 
     quiz_summary.append(round_result)
 
     # end quiz if requested # of question has been played
-    if rounds_played == rounds:
+    if questions_played == questions:
         break
 
     # Show quiz statistics
-rounds_won = rounds_played - rounds_lost - rounds_drawn
+questions_correct = questions_played - questions_wrong 
 
 # **** Calculate quiz Stats ****
-percent_win = rounds_won / rounds_played * 100
-percent_lose = rounds_lost / rounds_played * 100
+percent_win = questions_correct / questions_played * 100
+percent_lose = questions_wrong / questions_played * 100
 
 print()
 print("***** Quiz History *****")
-for game in quiz_summary:
-    print(game)
+for quiz in quiz_summary:
+    print(quiz)
 
 print()
 print("Thanks for playing")
