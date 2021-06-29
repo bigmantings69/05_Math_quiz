@@ -141,7 +141,7 @@ if round_choice == "yes":
 # ask the user to enter number of questions
 
 
-questions = int_check("Enter number of questions: ", 1, exit_code="")
+questions = int_check("Enter number of questions or <enter> for infinite mode : ", 1, exit_code="")
 
 # ask the user for the difficulty and run the chosen difficulty
 
