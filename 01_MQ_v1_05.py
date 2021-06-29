@@ -23,10 +23,10 @@ def int_check(question, low=None, high=None, exit_code=None):
     while True:
 
         response = input(question).lower()
-        exit_code = "xxx"
+
         if exit_code == "xxx" and response == "xxx":
             return response
-        elif exit_code == "xxx" and response == "":
+        elif exit_code == "" and response == "":
             return response
 
         situation = ""
@@ -99,7 +99,7 @@ def statement_generator(outcome, prize_decoration):
 
     return ""
 
-# if user choose yes then run this 
+# if user choose yes then print lets get started
 
 
 def start():
@@ -168,8 +168,9 @@ while end_quiz == "no":
     # questions Heading
     print()
     if questions == "":
-        round_heading = "Continues Mode: " \
-                "question {}".format(questions_played)
+        heading = "Continues Mode: question {}".format(questions_played + 1)
+        statement_generator(heading, "-")
+        print()
 
     else:
         heading = "Question {} ".format(questions_played + 1)
@@ -181,9 +182,9 @@ while end_quiz == "no":
 
     questions_played += 1
 
-    # number for the quiz questions:
-    num_1 = random.randint(1, 10)
-    num_2 = random.randint(10, 20)
+    # number for the quiz questions num 1 - num 2 is for hard and num 3 - num 4 is for easy
+    num_1 = random.randint(1, 100)
+    num_2 = random.randint(1, 150)
     num_3 = random.randint(5, 10)
     num_4 = random.randint(1, 5)
 
@@ -203,11 +204,11 @@ while end_quiz == "no":
 
     # the quiz user answer
 
-    result = int_check("Answer: ", exit_code="")
+    result = int_check("Answer or 'xxx' to quit: ", exit_code="xxx")
 
     # End quiz if exit code is type
     if result == "xxx":
-        print("So you have changed your mind, come on do the quiz", "LLL")
+        print("So you have changed your mind, come on do the quiz")
         break
     if result == answer:
         print("Correct")
@@ -217,7 +218,7 @@ while end_quiz == "no":
         feedback = "Incorrect"
 
     # Output results...
-    round_result = "question {}: {} | {}".format(questions_played, question, feedback)
+    round_result = "question {}: {} = {} | {}".format(questions_played, question, answer, feedback)
 
     quiz_summary.append(round_result)
 
@@ -229,11 +230,10 @@ while end_quiz == "no":
 questions_correct = questions_played - questions_wrong 
 
 # **** Calculate quiz Stats ****
-percent_win = questions_correct / questions_played * 100
-percent_lose = questions_wrong / questions_played * 100
 
 print()
 print("***** Quiz History *****")
+print()
 for quiz in quiz_summary:
     print(quiz)
 
